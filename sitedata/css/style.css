@@ -1,0 +1,22 @@
+@import "reset.css";
+@import "http://fonts.googleapis.com/css?family=Droid+Sans";
+
+body {
+	margin-top: 36px;
+	background-color: #000;
+	color: #fafefa;
+	font: 16px/27px 'Droid Sans', arial, serif;
+}
+h1#ssLogo {
+	background-color: rgba(0,0,0,0.3);
+	padding: 10px;
+	display: inline-block;
+	margin: 0px 0px 0px 40px;
+	color: #fff;
+	
+}
+#ssBg {
+	position:fixed;
+	top:0px;
+	z-index:-1;
+}
