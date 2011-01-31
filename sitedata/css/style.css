@@ -2,7 +2,6 @@
 @import "http://fonts.googleapis.com/css?family=Droid+Sans";
 
 body {
-	margin-top: 36px;
 	background-color: #000;
 	color: #fafefa;
 	font: 16px/27px 'Droid Sans', arial, serif;
@@ -11,9 +10,10 @@ h1#ssLogo {
 	background-color: rgba(0,0,0,0.5);
 	padding: 10px;
 	display: inline-block;
-	margin: 0px 10px 0px 40px;
+	margin: 20px 10px 0px 40px;
 	color: #fff;
 	float:left;
+	position:absolute;
 }
 #ssBg {
 	position:fixed;
@@ -23,7 +23,7 @@ h1#ssLogo {
 #ssNavi {
 	display: inline-block;
 	float:right;
-	margin-right:30px;
+	margin: 20px 30px 0px 0px;
 }
 #ssNavi li {
 	margin: 0px 10px 0px 0px;
