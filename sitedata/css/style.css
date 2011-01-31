@@ -8,15 +8,28 @@ body {
 	font: 16px/27px 'Droid Sans', arial, serif;
 }
 h1#ssLogo {
-	background-color: rgba(0,0,0,0.3);
+	background-color: rgba(0,0,0,0.5);
 	padding: 10px;
 	display: inline-block;
-	margin: 0px 0px 0px 40px;
+	margin: 0px 10px 0px 40px;
 	color: #fff;
-	
+	float:left;
 }
 #ssBg {
 	position:fixed;
 	top:0px;
 	z-index:-1;
+}
+#ssNavi {
+	display: inline-block;
+	float:right;
+	margin-right:30px;
+}
+#ssNavi li {
+	margin: 0px 10px 0px 0px;
+	background-color: rgba(0,0,0,0.5);
+	padding: 10px;
+	display: inline-block;
+	list-style-type:none;
+	cursor: pointer;
 }

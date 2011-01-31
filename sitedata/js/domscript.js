@@ -6,11 +6,7 @@ var app = {
 	},
 	interval: 50000,
 	timer:0,
-	updateBg: function() {
-
-		// Timer anhalten
-		clearInterval(app.timer)
-
+	updateBg: function(callback) {
 		// Image preloaden
 		var i = app.image.all[app.image.current]
 		var preload_image = new Image()
@@ -19,9 +15,8 @@ var app = {
 		$("#ssLogo").append(' <span id="loading">... loading next point</span>')
 
 		// Warten bis das Bild geladen ist
-		preload_image.onload = function(){
+		preload_image.onload = function() {
 			$('#loading').remove()
-
 			// Altes Bild ausfaden
 			$('img#ssBg').fadeOut('slow',function(){
 				// Bild ersetzen
@@ -34,16 +29,20 @@ var app = {
 				document.location.hash = '#'+i.id
 			})
 
-			// nächstes
-			if(app.image.current < (app.image.count-1)){
-				app.image.current++
-			} else {
-				app.image.current = 1
+			// Callback ausführen
+			if(typeof(callback) == 'function'){
+				callback()
 			}
-
-			// Timer timen
-			app.timer = setInterval("app.updateBg()",app.interval)
 		}
+	},
+	diashow: function(){
+		// Timer anhalten
+		clearInterval(app.timer)
+		// Nächstes Bild bitte
+		app.next(function(){
+			// Timer timen
+			app.timer = setInterval("app.diashow()",app.interval)
+		})
 	},
 	resz: function() {
 		var width = $(window).width();
@@ -62,23 +61,48 @@ var app = {
 		{
 			$('#ssBg').css({'width':over*height,'height':height});
 		}
+	},
+	prev: function(){
+		// vorhergehendes
+		if(app.image.current > 0){
+			app.image.current = app.image.current-1
+		} else {
+			app.image.current = (app.image.count-1)
+		}
+		app.updateBg()
+	},
+	next: function(callback){
+		// nächstes
+		if(app.image.current < (app.image.count-1)){
+			app.image.current = app.image.current+1
+		} else {
+			app.image.current = 1
+		}
+		app.updateBg(callback)
+	},
+	events: function(){
+		// Event: wenn Fenster Größe geändert wird!
+		$(window).resize(function(){
+			app.resz();
+		})
+		// Navigation
+		$('#ssApp_next').bind('click',app.next)
+		$('#ssApp_prev').bind('click',app.prev)
 	}
 }
 
 jsonFlickrApi = function(data){
+	app.events()
 	app.image.count = data.photos.photo.count()
 	app.image.all = data.photos.photo
-	app.updateBg() // start
+	app.updateBg()
+	// Timer timen
+	app.timer = setInterval("app.diashow()",app.interval)
+
 }
 
 // Event
-$(window).resize(function(){
-	app.resz();
-})
-
-// Event
 $(document).ready(function() {
-
 	$.ajax({
 		dataType:"jsonp",
 		url: 'http://api.flickr.com/services/rest/\
