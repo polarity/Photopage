@@ -1,4 +1,11 @@
 var app = {
+	config: {
+		apicall: 'http://api.flickr.com/services/rest/\
+		?format=json\
+		&method=flickr.groups.pools.getPhotos\
+		&group_id=1566229@N24\
+		&api_key=816350be5a7f8f0a4702284866ba5692'
+	},
 	image: {
 		count: 0,
 		all: {},
@@ -104,11 +111,7 @@ jsonFlickrApi = function(data){
 $(document).ready(function() {
 	$.ajax({
 		dataType:"jsonp",
-		url: 'http://api.flickr.com/services/rest/\
-		?format=json\
-		&method=flickr.groups.pools.getPhotos\
-		&group_id=1566229@N24\
-		&api_key=816350be5a7f8f0a4702284866ba5692',
+		url: app.config.apicall,
 		success: function(){
 			app.resz()
 		}
