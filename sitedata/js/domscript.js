@@ -10,24 +10,26 @@ var app = {
 		count: 0,
 		all: {},
 		current: 0,
+		obj: {}
 	},
 	interval: 50000,
 	timer:0,
 	updateBg: function(callback) {
 		// Image preloaden
 		var i = app.image.all[app.image.current]
-		var preload_image = new Image()
+		app.image.obj = new Image()
 
-		preload_image.src = 'http://farm'+i.farm+'.static.flickr.com/'+i.server+'/'+i.id+'_'+i.secret+'_b.jpg'
+		app.image.obj.src = 'http://farm'+i.farm+'.static.flickr.com/'+i.server+'/'+i.id+'_'+i.secret+'_b.jpg'
 		$("#ssLogo").append(' <span id="loading">... loading next point</span>')
 
 		// Warten bis das Bild geladen ist
-		preload_image.onload = function() {
+		app.image.obj.onload = function() {
+
 			$('#loading').remove()
 			// Altes Bild ausfaden
 			$('img#ssBg').fadeOut('slow',function(){
 				// Bild ersetzen
-				$(this).attr('src',preload_image.src)
+				$(this).attr('src',app.image.obj.src)
 				// Anpassen
 				app.resz()
 				// Neues einfaden
@@ -54,20 +56,31 @@ var app = {
 	resz: function() {
 		var width = $(window).width();
 		var height = $(window).height();
-
-		var imwidth = $('#ssBg').width();
-		var imheight = $('#ssBg').height();
-
+		var imwidth = app.image.obj.width;
+		var imheight = app.image.obj.height;
 		var over = imwidth / imheight;
 		var under = imheight / imwidth;
-		if((width / height) >=over)
-		{
-			$('#ssBg').css({'width':width,'height':under*width});
+		if((width / height) >=over) {
+			var newheight = under*width
+			var newwidth = width
+		} else {
+			var newheight = height
+			var newwidth = over*height
 		}
-		else
-		{
-			$('#ssBg').css({'width':over*height,'height':height});
+
+		$('#ssBg').css({'width':newwidth,'height':newheight})
+
+		if(height < newheight){
+			$('#ssBg').css({top:-((newheight-height)/2) })
+		} else {
+			$('#ssBg').css({top:0})
 		}
+		if(width < newwidth){
+			$('#ssBg').css({left:-((newwidth-width)/2) })
+		} else {
+			$('#ssBg').css({left:0})
+		}
+		
 	},
 	prev: function(){
 		// vorhergehendes
@@ -83,7 +96,7 @@ var app = {
 		if(app.image.current < (app.image.count-1)){
 			app.image.current = app.image.current+1
 		} else {
-			app.image.current = 1
+			app.image.current = 0
 		}
 		app.updateBg(callback)
 	},
