@@ -98,7 +98,6 @@ jsonFlickrApi = function(data){
 	app.updateBg()
 	// Timer timen
 	app.timer = setInterval("app.diashow()",app.interval)
-
 }
 
 // Event
@@ -107,15 +106,13 @@ $(document).ready(function() {
 		dataType:"jsonp",
 		url: 'http://api.flickr.com/services/rest/\
 		?format=json\
-		&method=flickr.photos.search\
-		&user_id=55807530@N00\
-		&tags=\
-		&tag_mode=all\
-		&api_key=816350be5a7f8f0a4702284866ba5692'
+		&method=flickr.groups.pools.getPhotos\
+		&group_id=1566229@N24\
+		&api_key=816350be5a7f8f0a4702284866ba5692',
+		success: function(){
+			app.resz()
+		}
 	})
-
-	app.resz()
-
 });
 
 // Javascript Objekt Zähl Hilfe
