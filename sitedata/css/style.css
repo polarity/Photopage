@@ -10,7 +10,7 @@ h1#ssLogo {
 	background-color: rgba(0,0,0,0.5);
 	padding: 10px;
 	display: inline-block;
-	margin: 20px 10px 0px 40px;
+	margin: 70px 10px 0px 40px;
 	color: #fff;
 	float:left;
 	position:absolute;
@@ -23,7 +23,7 @@ h1#ssLogo {
 #ssNavi {
 	display: inline-block;
 	float:right;
-	margin: 20px 30px 0px 0px;
+	margin: 70px 30px 0px 0px;
 }
 #ssNavi li {
 	margin: 0px 10px 0px 0px;

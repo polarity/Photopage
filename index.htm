@@ -2,7 +2,21 @@
 
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-	<title>Photopage</title>
+	<title>Photopage!</title>
+
+	<!-- iOs Homescreen -->
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <!-- Facebook OpenGraph --> 
+    <meta id="title" property="og:title" content=""/>
+    <meta id="image" property="og:image" content=""/>
+    <meta id="url" property="og:url" content=""/>
+    <meta id="site_name" property="og:site_name" content=""/>
+    <meta id="description" property="og:description" content="">
+
+    <meta id="admins" property="fb:admins" content="783877602">
+    <meta id="type" property="og:type" content="photo"/>
 
 	<!-- Stylesheets -->
 	<link rel="stylesheet" href="sitedata/css/style.css" type="text/css" />
@@ -10,14 +24,6 @@
 	<!-- Scripte -->
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" type="text/javascript"></script>
 	<script src="sitedata/js/domscript.js" type="text/javascript"></script>
-
-	<script type="text/javascript" charset="utf-8">
-		app.config.apicall = 'http://api.flickr.com/services/rest/\
-		?format=json\
-		&method=flickr.groups.pools.getPhotos\
-		&group_id=1566229@N24\
-		&api_key=816350be5a7f8f0a4702284866ba5692'
-	</script>
 </head>
 
 <body>
@@ -25,6 +31,7 @@
 	<h1 id="ssLogo">Photopage</h1>
 	<ul id="ssNavi">
 		<li id="ssApp_prev">Prev</li>
+		<li id="ssApp_play">Play</li>
 		<li id="ssApp_next">Next</li>
 	</ul>
 </body>
