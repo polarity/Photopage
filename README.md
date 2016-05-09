@@ -6,4 +6,4 @@ Portfolio anzuzeigen. Javascript basiert.
 
 Demo
 ----
-Small Demo of [Photopage](http://scriptshit.de/demo/vpoml)
+Small Demo of [Photopage](http://rawgit.com/polarity/Photopage/master/index.htm)
