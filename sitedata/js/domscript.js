@@ -3,7 +3,7 @@ var app = {
 		api_key: "816350be5a7f8f0a4702284866ba5692",
 		format: "json",
 		user_id: "55807530@N00",
-		apiurl: "http://api.flickr.com/services/rest/"
+		apiurl: "https://api.flickr.com/services/rest/"
 	},
 	image: {
 		count: 0,
